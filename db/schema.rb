@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012001911) do
+ActiveRecord::Schema.define(version: 20151025112543) do
+
+  create_table "roles", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.string   "title",        limit: 255
+    t.string   "status",       limit: 255
+    t.decimal  "salary",                   precision: 20, scale: 2
+    t.string   "salary_terms", limit: 255
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
+  add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           limit: 255
@@ -20,4 +32,5 @@ ActiveRecord::Schema.define(version: 20151012001911) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_foreign_key "roles", "users"
 end

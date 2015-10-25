@@ -6,6 +6,17 @@
 %p
   %b Password digest:
   = @user.password_digest
+%p
+  %b Roles
+  - if @user.roles.blank?
+    No Role.
+  - else
+    %ul
+      - @user.roles.each do |r|
+        %li
+          = r.title.titleize
+          = r.salary
+          = r.salary_terms
 
 = link_to 'Edit', edit_admin_user_path(@user)
 \|

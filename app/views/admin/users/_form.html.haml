@@ -5,7 +5,19 @@
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
-
+  = f.fields_for :roles do |r|
+    .field
+      = r.label :title
+      = r.select :title, options_for_select(title_options)
+    .field
+      = r.label :status
+      = r.select :status, options_for_select(role_status_options)
+    .field
+      = r.label :salary
+      = r.number_field :salary
+    .field
+      = r.label :salary_terms
+      = r.select :salary_terms, options_for_select(salary_term_options)
   .field
     = f.label :email
     = f.email_field :email

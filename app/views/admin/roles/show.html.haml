@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @role.user
+%p
+  %b Title:
+  = @role.title
+%p
+  %b Status:
+  = @role.status
+%p
+  %b Salary:
+  = @role.salary
+%p
+  %b Salary terms:
+  = @role.salary_terms
+
+= link_to 'Edit', edit_role_path(@role)
+\|
+= link_to 'Back', roles_path

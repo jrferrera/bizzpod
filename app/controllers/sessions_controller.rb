@@ -15,9 +15,10 @@ class SessionsController < ApplicationController
   	@user = User.find_by(email: params[:email])
 
   	if @user && @user.authenticate(params[:password])
-  		user_session(@user)
-  		redirect_to home_path  		
+  		user_session(@user)  		
   	end
+
+    redirect_to home_path
   end
 
   def destroy
